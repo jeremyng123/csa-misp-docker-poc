@@ -293,7 +293,7 @@ services:
       # mount custom ca root certificates
       # - "./rootca.pem:/usr/local/share/ca-certificates/rootca.crt"
     environment:
-      - "BASE_URL=localmisp:4431"
+      - "BASE_URL=https://localmisp:4431"
       - "CRON_USER_ID=${CRON_USER_ID}"
       - "DISABLE_IPV6=${DISABLE_IPV6}"
       - "DISABLE_SSL_REDIRECT=${DISABLE_SSL_REDIRECT}"
@@ -432,7 +432,7 @@ services:
       # mount custom ca root certificates
       # - "./rootca.pem:/usr/local/share/ca-certificates/rootca.crt"
     environment:
-      - "BASE_URL=localmisp:4432"
+      - "BASE_URL=https://localmisp:4432"
       - "CRON_USER_ID=${CRON_USER_ID}"
       - "DISABLE_IPV6=${DISABLE_IPV6}"
       - "DISABLE_SSL_REDIRECT=${DISABLE_SSL_REDIRECT}"
