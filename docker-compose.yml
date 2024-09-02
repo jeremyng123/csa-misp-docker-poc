@@ -131,7 +131,7 @@ services:
     depends_on:
       redis:
         condition: service_healthy
-      db:
+      db0:
         condition: service_healthy
     healthcheck:
       test: curl -ks ${BASE_URL:-localmisp:443}/users/heartbeat > /dev/null || exit 1
@@ -270,7 +270,7 @@ services:
     depends_on:
       redis:
         condition: service_healthy
-      db:
+      db1:
         condition: service_healthy
     healthcheck:
       test: curl -ks ${BASE_URL:--localmisp:4431}/users/heartbeat > /dev/null || exit 1
@@ -409,7 +409,7 @@ services:
     depends_on:
       redis:
         condition: service_healthy
-      db:
+      db2:
         condition: service_healthy
     healthcheck:
       test: curl -ks ${BASE_URL:-localmisp:4432}/users/heartbeat > /dev/null || exit 1
