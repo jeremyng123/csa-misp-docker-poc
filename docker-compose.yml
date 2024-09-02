@@ -134,7 +134,7 @@ services:
       db:
         condition: service_healthy
     healthcheck:
-      test: curl -ks ${BASE_URL:-https://localmisp0}/users/heartbeat > /dev/null || exit 1
+      test: curl -ks ${BASE_URL:-localmisp:443}/users/heartbeat > /dev/null || exit 1
       interval: 2s
       timeout: 1s
       retries: 3
@@ -273,7 +273,7 @@ services:
       db:
         condition: service_healthy
     healthcheck:
-      test: curl -ks ${BASE_URL:-https://localmisp1}/users/heartbeat > /dev/null || exit 1
+      test: curl -ks ${BASE_URL:--localmisp:4431}/users/heartbeat > /dev/null || exit 1
       interval: 2s
       timeout: 1s
       retries: 3
@@ -412,15 +412,15 @@ services:
       db:
         condition: service_healthy
     healthcheck:
-      test: curl -ks ${BASE_URL:-https://localmisp2}/users/heartbeat > /dev/null || exit 1
+      test: curl -ks ${BASE_URL:-localmisp:4432}/users/heartbeat > /dev/null || exit 1
       interval: 2s
       timeout: 1s
       retries: 3
       start_period: 30s
       start_interval: 30s
     ports:
-      - "80:80"
-      - "443:443"
+      - "82:80"
+      - "4432:443"
     volumes:
       - "./configs2/:/var/www/MISP/app/Config/"
       - "./logs2/:/var/www/MISP/app/tmp/logs/"
