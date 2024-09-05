@@ -1,3 +1,7 @@
+# ATTENTION
+All work done here is done by me, and only me (not of my employer, etc.)
+
+
 # MISP Docker images
 
 [![Build Status](https://img.shields.io/github/actions/workflow/status/MISP/misp-docker/release-latest.yml)](https://github.com/orgs/MISP/packages)
