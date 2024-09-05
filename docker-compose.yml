@@ -134,7 +134,7 @@ services:
       db0:
         condition: service_healthy
     healthcheck:
-      test: curl -ks ${BASE_URL:-localmisp:443}/users/heartbeat > /dev/null || exit 1
+      test: curl -ks ${BASE_URL:-localmisp.com:443}/users/heartbeat > /dev/null || exit 1
       interval: 2s
       timeout: 1s
       retries: 3
@@ -154,7 +154,7 @@ services:
       # mount custom ca root certificates
       # - "./rootca.pem:/usr/local/share/ca-certificates/rootca.crt"
     environment:
-      - "BASE_URL=https://localmisp"
+      - "BASE_URL=https://localmisp.com"
       - "CRON_USER_ID=${CRON_USER_ID}"
       - "DISABLE_IPV6=${DISABLE_IPV6}"
       - "DISABLE_SSL_REDIRECT=${DISABLE_SSL_REDIRECT}"
@@ -273,7 +273,7 @@ services:
       db1:
         condition: service_healthy
     healthcheck:
-      test: curl -ks ${BASE_URL:--localmisp:4431}/users/heartbeat > /dev/null || exit 1
+      test: curl -ks ${BASE_URL:-remotemisp1.com:4431}/users/heartbeat > /dev/null || exit 1
       interval: 2s
       timeout: 1s
       retries: 3
@@ -293,7 +293,7 @@ services:
       # mount custom ca root certificates
       # - "./rootca.pem:/usr/local/share/ca-certificates/rootca.crt"
     environment:
-      - "BASE_URL=https://localmisp:4431"
+      - "BASE_URL=https://remotemisp1.com:4431"
       - "CRON_USER_ID=${CRON_USER_ID}"
       - "DISABLE_IPV6=${DISABLE_IPV6}"
       - "DISABLE_SSL_REDIRECT=${DISABLE_SSL_REDIRECT}"
@@ -412,7 +412,7 @@ services:
       db2:
         condition: service_healthy
     healthcheck:
-      test: curl -ks ${BASE_URL:-localmisp:4432}/users/heartbeat > /dev/null || exit 1
+      test: curl -ks ${BASE_URL:-remotemisp2.com:4432}/users/heartbeat > /dev/null || exit 1
       interval: 2s
       timeout: 1s
       retries: 3
@@ -432,7 +432,7 @@ services:
       # mount custom ca root certificates
       # - "./rootca.pem:/usr/local/share/ca-certificates/rootca.crt"
     environment:
-      - "BASE_URL=https://localmisp:4432"
+      - "BASE_URL=https://remotemisp2.com:4432"
       - "CRON_USER_ID=${CRON_USER_ID}"
       - "DISABLE_IPV6=${DISABLE_IPV6}"
       - "DISABLE_SSL_REDIRECT=${DISABLE_SSL_REDIRECT}"
