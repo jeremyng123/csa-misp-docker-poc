@@ -246,7 +246,9 @@ services:
       - "PHP_UPLOAD_MAX_FILESIZE=${PHP_UPLOAD_MAX_FILESIZE:-50M}"
       - "PHP_POST_MAX_SIZE=${PHP_POST_MAX_SIZE:-50M}"
       - "PHP_MAX_INPUT_TIME:${PHP_MAX_INPUT_TIME:-300}"
-  
+    links:
+      - "misp-core1:remotemisp1"
+      - "misp-core2:remotemisp2"
   misp-core1:
     image: ghcr.io/misp/misp-docker/misp-core:${CORE_RUNNING_TAG:-latest}
     cap_add:
@@ -385,7 +387,9 @@ services:
       - "PHP_UPLOAD_MAX_FILESIZE=${PHP_UPLOAD_MAX_FILESIZE:-50M}"
       - "PHP_POST_MAX_SIZE=${PHP_POST_MAX_SIZE:-50M}"
       - "PHP_MAX_INPUT_TIME:${PHP_MAX_INPUT_TIME:-300}"
-
+    links:
+      - "misp-core0:localmisp"
+      - "misp-core2:remotemisp2"
   misp-core2:
     image: ghcr.io/misp/misp-docker/misp-core:${CORE_RUNNING_TAG:-latest}
     cap_add:
@@ -524,7 +528,9 @@ services:
       - "PHP_UPLOAD_MAX_FILESIZE=${PHP_UPLOAD_MAX_FILESIZE:-50M}"
       - "PHP_POST_MAX_SIZE=${PHP_POST_MAX_SIZE:-50M}"
       - "PHP_MAX_INPUT_TIME:${PHP_MAX_INPUT_TIME:-300}"
-
+    links:
+      - "misp-core0:localmisp"
+      - "misp-core1:remotemisp1"
   misp-modules:
     image: ghcr.io/misp/misp-docker/misp-modules:${MODULES_RUNNING_TAG:-latest}
     build:
