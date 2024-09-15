@@ -1,0 +1,48 @@
+{
+  "namespace": "mgmt",
+  "expanded": "Management only taxonomy",
+  "description": "Authorized personnel to determine whether events published are to be shared with remote partners or not",
+  "version": 1,
+  "predicates": [
+    {
+      "value": "wayne",
+      "expanded": "Reviewed by Wayne"
+    },
+    {
+      "value": "jeremy",
+      "expanded": "Reviewed by Jeremy"
+    }
+  ],
+  "values": [
+    {
+      "predicate": "wayne",
+      "entry": [
+        {
+          "value": "true",
+          "expanded": "Approved for sharing with other MISP instances",
+          "colour": "#A1F542"
+        },
+        {
+          "value": "false",
+          "expanded": "Only for KM",
+          "colour": "#F54242"
+        }
+      ]
+    },
+    {
+      "predicate": "jeremy",
+      "entry": [
+        {
+          "value": "true",
+          "expanded": "Approved for sharing with other MISP instances",
+          "colour": "#A1F542"
+        },
+        {
+          "value": "false",
+          "expanded": "Only for KM",
+          "colour": "#F54242"
+        }
+      ]
+    }
+  ]
+}
