@@ -556,7 +556,7 @@ services:
       - "localmisp.com:192.168.152.128"
       - "remotemisp1.com:192.168.152.128"
 
-  misp-modules:
+  misp-modules0:
     image: ghcr.io/misp/misp-docker/misp-modules:${MODULES_RUNNING_TAG:-latest}
     build:
       context: modules/.
@@ -565,11 +565,45 @@ services:
         - MODULES_COMMIT=${MODULES_COMMIT}
         - LIBFAUP_COMMIT=${LIBFAUP_COMMIT:?Missing .env file, see README.md for instructions}
     environment:
-      - "REDIS_BACKEND=${REDIS_HOST:-redis}"
+      - "REDIS_BACKEND=${REDIS_HOST:-redis0}"
       - "REDIS_PORT=${REDIS_PORT:-6379}"
       - "REDIS_PW=${REDIS_PASSWORD:-redispassword}"
     depends_on:
-      redis:
+      redis0:
+        condition: service_healthy
+
+      
+
+  misp-modules1:
+    image: ghcr.io/misp/misp-docker/misp-modules:${MODULES_RUNNING_TAG:-latest}
+    build:
+      context: modules/.
+      args:
+        - MODULES_TAG=${MODULES_TAG:?Missing .env file, see README.md for instructions}
+        - MODULES_COMMIT=${MODULES_COMMIT}
+        - LIBFAUP_COMMIT=${LIBFAUP_COMMIT:?Missing .env file, see README.md for instructions}
+    environment:
+      - "REDIS_BACKEND=${REDIS_HOST:-redis1}"
+      - "REDIS_PORT=${REDIS_PORT:-6379}"
+      - "REDIS_PW=${REDIS_PASSWORD:-redispassword}"
+    depends_on:
+      redis0:
+        condition: service_healthy
+
+  misp-modules2:
+    image: ghcr.io/misp/misp-docker/misp-modules:${MODULES_RUNNING_TAG:-latest}
+    build:
+      context: modules/.
+      args:
+        - MODULES_TAG=${MODULES_TAG:?Missing .env file, see README.md for instructions}
+        - MODULES_COMMIT=${MODULES_COMMIT}
+        - LIBFAUP_COMMIT=${LIBFAUP_COMMIT:?Missing .env file, see README.md for instructions}
+    environment:
+      - "REDIS_BACKEND=${REDIS_HOST:-redis2}"
+      - "REDIS_PORT=${REDIS_PORT:-6379}"
+      - "REDIS_PW=${REDIS_PASSWORD:-redispassword}"
+    depends_on:
+      redis0:
         condition: service_healthy
 
 volumes:
