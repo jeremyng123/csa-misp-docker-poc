@@ -164,7 +164,7 @@ services:
       - "ADMIN_EMAIL=${ADMIN_EMAIL}"
       - "ADMIN_PASSWORD=${ADMIN_PASSWORD}"
       - "ADMIN_KEY=${ADMIN_KEY}"
-      - "ADMIN_ORG=${ADMIN_ORG}"
+      - "ADMIN_ORG=${ADMIN_ORG0}"
       - "GPG_PASSPHRASE=${GPG_PASSPHRASE}"
       # OIDC authentication settings
       - "OIDC_ENABLE=${OIDC_ENABLE}"
@@ -306,7 +306,7 @@ services:
       - "ADMIN_EMAIL=${ADMIN_EMAIL}"
       - "ADMIN_PASSWORD=${ADMIN_PASSWORD}"
       - "ADMIN_KEY=${ADMIN_KEY}"
-      - "ADMIN_ORG=${ADMIN_ORG}"
+      - "ADMIN_ORG=${ADMIN_ORG1}"
       - "GPG_PASSPHRASE=${GPG_PASSPHRASE}"
       # OIDC authentication settings
       - "OIDC_ENABLE=${OIDC_ENABLE}"
@@ -448,7 +448,7 @@ services:
       - "ADMIN_EMAIL=${ADMIN_EMAIL}"
       - "ADMIN_PASSWORD=${ADMIN_PASSWORD}"
       - "ADMIN_KEY=${ADMIN_KEY}"
-      - "ADMIN_ORG=${ADMIN_ORG}"
+      - "ADMIN_ORG=${ADMIN_ORG2}"
       - "GPG_PASSPHRASE=${GPG_PASSPHRASE}"
       # OIDC authentication settings
       - "OIDC_ENABLE=${OIDC_ENABLE}"
