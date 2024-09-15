@@ -11,7 +11,29 @@ services:
       - "SMARTHOST_PASSWORD=${SMARTHOST_PASSWORD}"
       - "SMARTHOST_ALIASES=${SMARTHOST_ALIASES}"
 
-  redis:
+  redis0:
+    image: valkey/valkey:7.2
+    command: "--requirepass ${REDIS_PASSWORD:-redispassword}"
+    healthcheck:
+      test: "valkey-cli -a ${REDIS_PASSWORD:-redispassword} ping || exit 1"
+      interval: 2s
+      timeout: 1s
+      retries: 3
+      start_period: 30s
+
+  
+  redis1:
+    image: valkey/valkey:7.2
+    command: "--requirepass ${REDIS_PASSWORD:-redispassword}"
+    healthcheck:
+      test: "valkey-cli -a ${REDIS_PASSWORD:-redispassword} ping || exit 1"
+      interval: 2s
+      timeout: 1s
+      retries: 3
+      start_period: 30s
+    
+  
+  redis2:
     image: valkey/valkey:7.2
     command: "--requirepass ${REDIS_PASSWORD:-redispassword}"
     healthcheck:
@@ -129,7 +151,7 @@ services:
           - PYPI_PYMISP_VERSION=${PYPI_PYMISP_VERSION}
           - PYPI_MISP_STIX_VERSION=${PYPI_MISP_STIX_VERSION}
     depends_on:
-      redis:
+      redis0:
         condition: service_healthy
       db0:
         condition: service_healthy
@@ -229,7 +251,7 @@ services:
       - "MYSQL_PASSWORD=${MYSQL_PASSWORD:-example}"
       - "MYSQL_DATABASE=${MYSQL_DATABASE:-misp}"
       # redis settings
-      - "REDIS_HOST=${REDIS_HOST:-redis}"
+      - "REDIS_HOST=${REDIS_HOST:-redis0}"
       - "REDIS_PORT=${REDIS_PORT:-6379}"
       - "REDIS_PASSWORD=${REDIS_PASSWORD:-redispassword}"
       # Debug setting 
@@ -271,7 +293,7 @@ services:
           - PYPI_PYMISP_VERSION=${PYPI_PYMISP_VERSION}
           - PYPI_MISP_STIX_VERSION=${PYPI_MISP_STIX_VERSION}
     depends_on:
-      redis:
+      redis1:
         condition: service_healthy
       db1:
         condition: service_healthy
@@ -371,7 +393,7 @@ services:
       - "MYSQL_PASSWORD=${MYSQL_PASSWORD:-example}"
       - "MYSQL_DATABASE=${MYSQL_DATABASE:-misp}"
       # redis settings
-      - "REDIS_HOST=${REDIS_HOST:-redis}"
+      - "REDIS_HOST=${REDIS_HOST:-redis1}"
       - "REDIS_PORT=${REDIS_PORT:-6379}"
       - "REDIS_PASSWORD=${REDIS_PASSWORD:-redispassword}"
       # Debug setting 
@@ -413,7 +435,7 @@ services:
           - PYPI_PYMISP_VERSION=${PYPI_PYMISP_VERSION}
           - PYPI_MISP_STIX_VERSION=${PYPI_MISP_STIX_VERSION}
     depends_on:
-      redis:
+      redis2:
         condition: service_healthy
       db2:
         condition: service_healthy
@@ -513,7 +535,7 @@ services:
       - "MYSQL_PASSWORD=${MYSQL_PASSWORD:-example}"
       - "MYSQL_DATABASE=${MYSQL_DATABASE:-misp}"
       # redis settings
-      - "REDIS_HOST=${REDIS_HOST:-redis}"
+      - "REDIS_HOST=${REDIS_HOST:-redis2}"
       - "REDIS_PORT=${REDIS_PORT:-6379}"
       - "REDIS_PASSWORD=${REDIS_PASSWORD:-redispassword}"
       # Debug setting 
