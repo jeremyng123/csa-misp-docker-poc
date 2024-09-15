@@ -587,7 +587,7 @@ services:
       - "REDIS_PORT=${REDIS_PORT:-6379}"
       - "REDIS_PW=${REDIS_PASSWORD:-redispassword}"
     depends_on:
-      redis0:
+      redis1:
         condition: service_healthy
 
   misp-modules2:
@@ -603,7 +603,7 @@ services:
       - "REDIS_PORT=${REDIS_PORT:-6379}"
       - "REDIS_PW=${REDIS_PASSWORD:-redispassword}"
     depends_on:
-      redis0:
+      redis2:
         condition: service_healthy
 
 volumes:
